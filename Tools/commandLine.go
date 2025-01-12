@@ -6,7 +6,9 @@ import (
 	"strings"
 )
 
-func CheckCommandLineArg() {
+var lines []string
+
+func CheckCommandLineArg() []string {
 	if len(os.Args) != 2 {
 		fmt.Println("Usage: rooms <roomfile>")
 		os.Exit(1)
@@ -24,10 +26,11 @@ func CheckCommandLineArg() {
 		os.Exit(1)
 	}
 
-	lines := strings.Split(string(file), "\n")
+	lines = strings.Split(string(file), "\n")
 	if len(lines) < 6 {
 		fmt.Println("Error: Room file must contain at least 6 lines")
 		os.Exit(1)
 	}
 
+	return lines
 }
